@@ -28,6 +28,7 @@ class lab3 {
         int rand;
 
 
+		/* Input array size */
         System.out.println("Input number of integers for array:");
 
         Scanner sc = new Scanner(System.in);
@@ -35,7 +36,6 @@ class lab3 {
         int numOfInt = sc.nextInt();
 
         int[] E = new int[numOfInt];
-        int[] E1 = new int[numOfInt];
 
         for (int i = 0; i < numOfInt; i++) {
             rand = (int) (Math.random() * range) + min;
@@ -43,19 +43,20 @@ class lab3 {
         }
 
         /* Create copy of original array */
+		int[] E1 = new int[numOfInt];
         System.arraycopy(E, 0, E1, 0, E.length);
 
         /*     Print out original array */
         //   print(E, "Original Array:");
 
-        /* Call merge sort on original array */
+        /* Call Mergesort on original array */
         startTime1 = System.nanoTime();
         mergeSort(E, 0, E.length - 1);
         endTime1 = System.nanoTime();
         totalTime1 = endTime1 - startTime1;
 
         long tempCounter = counter;
-        System.out.println("---Merge sort without insertion---");
+        System.out.println("---Mergesort without insertion---");
         System.out.println("Number of comparisons: " + counter);
         System.out.println("Time taken: " + totalTime1 + " nanoseconds");
         //  print(E, "Array Output:");
@@ -63,18 +64,19 @@ class lab3 {
         /* Reset comparison counter */
         counter = 0;
 
-        /* Call merge sort with insertion on copy of original array */
+        /* Call MergeInsertionSort on copy of original array */
         startTime2 = System.nanoTime();
-        mergeSortWithInsertion(E1, 0, E1.length - 1, S);
+        mergeInsertionSort(E1, 0, E1.length - 1, S);
         endTime2 = System.nanoTime();
         totalTime2 = endTime2 - startTime2;
 
-        System.out.println("\r\n---Merge sort with insertion---");
+        System.out.println("\r\n---Mergesort with insertion---");
         System.out.println("Number of comparisons: " + counter);
         System.out.println("Time taken: " + totalTime2 + " nanoseconds");
         //  print(E1, "Array Output:");
 
 
+		/* Comparison between Mergesort algorithms */
         System.out.println("\r\nFor array size of " + numOfInt + " and threshold of " + S +":");
 
         if (counter > tempCounter)
@@ -104,15 +106,15 @@ class lab3 {
         }
     }
 
-    private static void mergeSortWithInsertion(int[] E, int first, int last, int S) {
+    private static void mergeInsertionSort(int[] E, int first, int last, int S) {
 
         /* If array is more than threshold */
         if ((last - first) > S) {
 
             int mid = (first + last) / 2;
 
-            mergeSortWithInsertion(E, first, mid, S);
-            mergeSortWithInsertion(E, mid + 1, last, S);
+            mergeInsertionSort(E, first, mid, S);
+            mergeInsertionSort(E, mid + 1, last, S);
 
             merge(E, first, mid, last);
 
