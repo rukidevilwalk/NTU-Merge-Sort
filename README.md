@@ -36,8 +36,3 @@ program on the data sets. Describe how running times increase with input
 sizes when running the two versions of Mergesort algorithm.
 3. Carry out experiments to study how the different values of S will affect the
 performance of the modified algorithm.
-CE2001/CZ2001	Algorithms				
-Example	Class
-5
-Example Class 4 (Week 11 – Week 12)
-Please choose one of the following two proj
