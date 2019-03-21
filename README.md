@@ -1,4 +1,4 @@
-# cz2001 Example Class 3
+# CZ2001 Example Class 3
 
 # Integration of Mergesort and Insertion Sort
 
@@ -8,6 +8,7 @@ can be remedied by choosing a small value of S as a threshold for the size of
 sub-arrays. When the size of a sub-array in a recursive call is less than or equal
 to the value of S, the algorithm will switch to Insertion sort, which is efficient for
 small input. A pseudocode of the modified Mergesort is given below:
+```
 void mergeSort(Element E[], int first, int last, int S)
 {
 if (last – first > S) {
@@ -19,6 +20,7 @@ merge(E, first, mid, last);
 insertionSort(E, first, last);
 }
 }
+```
 Implement the original version of Mergesort (as learned in lecture) and the above
 modified version of Mergesort, using a programming language of your choice (e.g.
 Java, C or C++). Compare their performances in the numbers of key
