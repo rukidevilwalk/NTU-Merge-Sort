@@ -5,15 +5,13 @@ class lab3 {
     /* Comparison counter*/
     private static long counter;
 
-    /* Threshold S*/
-    private static final int S = 1000;
-
     private static long startTime1;
     private static long endTime1;
     private static long totalTime1 = 0;
     private static long startTime2;
     private static long endTime2;
     private static long totalTime2 = 0;
+    static int S;
 
     public static void main(String[] args) {
 
@@ -28,22 +26,28 @@ class lab3 {
         int rand;
 
 
-		/* Input array size */
+        /* Input array size */
         System.out.println("Input number of integers for array:");
 
         Scanner sc = new Scanner(System.in);
 
         int numOfInt = sc.nextInt();
 
+        /* Input threshold size */
+        System.out.println("Input threshold size:");
+
+        S = sc.nextInt();
+
         int[] E = new int[numOfInt];
 
+        /* Generate array */
         for (int i = 0; i < numOfInt; i++) {
             rand = (int) (Math.random() * range) + min;
             E[i] = rand;
         }
 
         /* Create copy of original array */
-		int[] E1 = new int[numOfInt];
+        int[] E1 = new int[numOfInt];
         System.arraycopy(E, 0, E1, 0, E.length);
 
         /*     Print out original array */
@@ -76,8 +80,8 @@ class lab3 {
         //  print(E1, "Array Output:");
 
 
-		/* Comparison between Mergesort algorithms */
-        System.out.println("\r\nFor array size of " + numOfInt + " and threshold of " + S +":");
+        /* Comparison between Mergesort algorithms */
+        System.out.println("\r\nFor array size of " + numOfInt + " and threshold of " + S + ":");
 
         if (counter > tempCounter)
             System.out.println("Mergesort without insertion has less comparisons");
